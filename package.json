@@ -1,0 +1,29 @@
+{
+  "name": "b34tp",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "tree-top-server",
+    "TreeTopTown"
+  ],
+  "engines": {
+    "node": ">= 10.x",
+    "yarn": ">= 0.18.0"
+  },
+  "scripts": {
+    "api:dev": "yarn --cwd tree-top-server start:dev",
+    "api:start": "yarn --cwd tree-top-server start",
+    "api:build": "yarn --cwd tree-top-server build",
+    "app:start": "yarn --cwd TreeTopTown start",
+    "app:build": "yarn --cwd TreeTopTown build",
+    "app:prod": "yarn --cwd TreeTopTown prod",
+    "start": "concurrently -k \"yarn api:dev\" \"yarn app:start\""
+  },
+  "dependencies": {
+    "concurrently": "^5.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.2"
+  }
+}
