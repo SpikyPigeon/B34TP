@@ -22,8 +22,5 @@
   },
   "dependencies": {
     "concurrently": "^5.0.0"
-  },
-  "devDependencies": {
-    "typescript": "^3.7.2"
   }
 }
