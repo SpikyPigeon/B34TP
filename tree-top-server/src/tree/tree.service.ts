@@ -58,4 +58,9 @@ export class TreeService {
 		this.logger.log(`Save Tree with ID = ${tree.id}`);
 		return await this.feats.save(tree);
 	}
+
+	async deleteTreeById(id: number) {
+		this.logger.log(`Delete Tree with ID = ${id}`);
+		await this.feats.delete({id});
+	}
 }
