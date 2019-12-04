@@ -7,10 +7,12 @@ export const databaseProviders = [
 			type: "mssql",
 			database: "TreeTopTown",
 			host: "localhost",
+			port: 1433,
+			username: "piggy",
+			password: "P@ssw0rd",
 			options: {
 				useUTC: true
 			},
-			domain: "Multihexa.ad",
 			synchronize: true,
 			entities: [
 				__dirname + "/../**/*.entity{.ts,.js}",
