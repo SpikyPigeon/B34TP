@@ -1,5 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn, OneToMany} from "typeorm";
-import {SimulationDetails} from "../simulation/simulation.entity";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {SimulationDetails} from "../simulation";
 
 @Entity()
 export class Tree {

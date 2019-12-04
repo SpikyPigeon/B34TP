@@ -1,4 +1,4 @@
-import {CreateDateColumn, Entity, OneToMany, ManyToOne, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {Tree} from "../tree";
 
 @Entity()
