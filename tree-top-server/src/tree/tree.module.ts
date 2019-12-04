@@ -5,9 +5,8 @@ import {treeProviders} from "./tree.provider";
 import {TreeService} from "./tree.service";
 
 @Module({
-	imports: [
-		DatabaseModule
-	],
+	imports: [DatabaseModule],
+	exports: [TreeService],
 	providers: [
 		...treeProviders,
 		TreeService
