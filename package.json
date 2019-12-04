@@ -5,7 +5,7 @@
   "private": true,
   "workspaces": [
     "tree-top-server",
-    "TreeTopTown"
+    "tree-top-town"
   ],
   "engines": {
     "node": ">= 10.x",
