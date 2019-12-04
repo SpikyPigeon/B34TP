@@ -5,7 +5,12 @@ export const databaseProviders = [
 		provide: "DATABASE_CONNECTION",
 		useFactory: async () => await createConnection({
 			type: "mssql",
-			url: "Data Source=.;Initial Catalog=TreeTopTown;Integrated Security=True",
+			database: "TreeTopTown",
+			host: "localhost",
+			options: {
+				useUTC: true
+			},
+			domain: "Multihexa.ad",
 			synchronize: true,
 			entities: [
 				__dirname + "/../**/*.entity{.ts,.js}",
