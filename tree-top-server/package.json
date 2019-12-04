@@ -16,9 +16,11 @@
     "@nestjs/common": "^6.10.5",
     "@nestjs/core": "^6.10.5",
     "@nestjs/platform-express": "^6.10.5",
+    "mssql": "^6.0.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
-    "rxjs": "^6.5.3"
+    "rxjs": "^6.5.3",
+    "typeorm": "^0.2.20"
   },
   "devDependencies": {
     "@nestjs/cli": "^6.12.7",
