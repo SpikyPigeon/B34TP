@@ -11,7 +11,15 @@ export class CreateTreeDefinition {
 	public readonly pesticideUsage: number;
 	public readonly fertilizerUsage: number;
 
-	constructor(name: string, maxDiameter: number, maxProduction: number, maxAge: number, mrpPerKg: number, pesticideUsage: number, fertilizerUsage: number) {
+	constructor(
+		name: string,
+		maxDiameter: number,
+		maxProduction: number,
+		maxAge: number,
+		mrpPerKg: number,
+		pesticideUsage: number,
+		fertilizerUsage: number
+	) {
 		this.name = name;
 		this.maxDiameter = maxDiameter;
 		this.maxProduction = maxProduction;
