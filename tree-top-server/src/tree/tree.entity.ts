@@ -22,7 +22,10 @@ export class Tree {
 	@Column({nullable: false})
 	maxAge!: number;
 
-	@Column({nullable: false})
+	@Column({
+		type: "float",
+		nullable: false
+	})
 	mrpPerKg!: number;
 
 	@Column({nullable: false})
