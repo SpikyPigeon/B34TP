@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, PrimaryGeneratedColumn, OneToMany} from "typeorm";
+import {SimulationDetails} from "../simulation/simulation.entity";
 
 @Entity()
 export class Tree {
@@ -33,4 +34,7 @@ export class Tree {
 
 	@Column({nullable: false})
 	fertilizerUsage!: number;
+
+	@OneToMany(type => SimulationDetails, details => details.tree)
+	details!: SimulationDetails[];
 }

@@ -2,10 +2,12 @@ import {Module} from '@nestjs/common';
 import {AppController} from './app.controller';
 import {AppService} from './app.service';
 import {TreeModule} from "./tree";
+import {SimulationModule} from "./simulation";
 
 @Module({
 	imports: [
-		TreeModule
+		TreeModule,
+		SimulationModule
 	],
 	controllers: [AppController],
 	providers: [AppService],
