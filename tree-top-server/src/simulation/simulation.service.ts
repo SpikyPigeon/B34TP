@@ -1,6 +1,7 @@
 import {Inject, Injectable, Logger} from '@nestjs/common';
 import {Repository} from "typeorm";
 import {Simulation, SimulationDetails} from "./simulation.entity";
+import {TreeService} from "../tree";
 
 export class CreateSimulationDefinition {
 	public readonly budget: number;
@@ -33,6 +34,7 @@ export class SimulationService {
 		private readonly sims: Repository<Simulation>,
 		@Inject("SIMULATION_DETAILS_REPOSITORY")
 		private readonly details: Repository<SimulationDetails>,
+		private readonly trees: TreeService
 	) {
 	}
 
@@ -42,13 +44,43 @@ export class SimulationService {
 	}
 
 	async getSimulationById(id: number): Promise<Simulation> {
-		this.logger.log(`Get Simulation with ID = ${id}`);
-		return await this.sims.findOneOrFail(id);
+		this.logger.log(`Get Simulation with ID = ${id}, with details`);
+		let sim = await this.sims.createQueryBuilder("sim")
+			.leftJoinAndSelect("sim.details", "detail")
+			.leftJoinAndSelect("detail.tree", "tree")
+			.getOne();
+
+		if (!sim) {
+			throw new Error(`Simulation with ID = ${id} not found`);
+		}
+
+		return sim;
 	}
 
 	async getDetailsForSimulation(simId: number): Promise<SimulationDetails[]> {
 		this.logger.log(`Get SimulationDetails for Simulation ${simId}`);
 		let sim = await this.sims.findOneOrFail(simId, {relations: ["details"]});
 		return sim.details;
+	}
+
+	async createSimulation(data: CreateSimulationDefinition): Promise<Simulation> {
+		this.logger.log(`Create Simulation with Budget = ${data.budget}$`);
+		let sim = new Simulation();
+		Object.assign(sim, data);
+		return await this.sims.save(sim);
+	}
+
+	async addDetailsToSimulation(simId: number, ...data: CreateSimulationDetailDefinition[]): Promise<Simulation> {
+		this.logger.log(`Add SimulationDetails to Simulation with ID = ${simId}`);
+		let sim = await this.sims.findOneOrFail(simId, {relations: ["details"]});
+		let details = await Promise.all(data.map(async value => {
+			let detail = new SimulationDetails();
+			detail.isBio = value.isBio;
+			detail.quantity = value.quantity;
+			detail.tree = await this.trees.getTreeById(value.tree);
+			return await this.details.save(detail);
+		}));
+		sim.details.push(...details);
+		return await this.sims.save(sim);
 	}
 }
