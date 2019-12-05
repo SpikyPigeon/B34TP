@@ -1,10 +1,14 @@
 import {Inject, Injectable, Logger} from '@nestjs/common';
+import {ApiProperty} from "@nestjs/swagger";
 import {Repository} from "typeorm";
 import {Simulation, SimulationDetails} from "./simulation.entity";
 import {TreeService} from "../tree";
 
 export class CreateSimulationDefinition {
+	@ApiProperty()
 	public readonly budget: number;
+
+	@ApiProperty()
 	public readonly terrainSize: number;
 
 	constructor(budget: number, terrainSize: number) {
@@ -14,8 +18,13 @@ export class CreateSimulationDefinition {
 }
 
 export class CreateSimulationDetailDefinition {
+	@ApiProperty()
 	public readonly tree: number;
+
+	@ApiProperty()
 	public readonly quantity: number;
+
+	@ApiProperty()
 	public readonly isBio: boolean;
 
 	constructor(tree: number, quantity: number, isBio: boolean) {

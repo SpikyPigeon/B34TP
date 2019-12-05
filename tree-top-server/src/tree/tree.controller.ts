@@ -1,8 +1,10 @@
 import {Body, Controller, Delete, Get, Logger, Param, Post, Put, Query} from "@nestjs/common";
+import {ApiOkResponse, ApiTags} from "@nestjs/swagger";
 import {CreateTreeDefinition, TreeService} from "./tree.service";
 import {Tree} from "./tree.entity";
 
 @Controller("tree")
+@ApiTags("tree")
 export class TreeController {
 	private readonly logger: Logger = new Logger(TreeController.name);
 
@@ -10,6 +12,7 @@ export class TreeController {
 	}
 
 	@Get()
+	@ApiOkResponse({type: [Tree]})
 	async getTree(@Query("name") name?: string, @Query("id") id?: number): Promise<Tree[]> {
 		if (name) {
 			this.logger.log(`getTree with name = '${name}'`);
@@ -26,18 +29,21 @@ export class TreeController {
 	}
 
 	@Get(":id")
+	@ApiOkResponse({type: Tree})
 	async getTreeById(@Param("id") id: number): Promise<Tree> {
 		this.logger.log(`getTreeById with id = ${id}`);
 		return await this.trees.getTreeById(id);
 	}
 
 	@Post()
+	@ApiOkResponse({type: Tree})
 	async createTree(@Body() data: CreateTreeDefinition): Promise<Tree> {
 		this.logger.log(`createTree with name = '${data.name}'`);
 		return await this.trees.createTree(data);
 	}
 
 	@Put(":id")
+	@ApiOkResponse({type: Tree})
 	async updateTree(@Param("id") id: number, @Body() data: CreateTreeDefinition): Promise<Tree> {
 		this.logger.log(`updateTree with id = ${id}`);
 		let tree = await this.trees.getTreeById(id);

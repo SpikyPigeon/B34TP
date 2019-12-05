@@ -1,14 +1,28 @@
 import {Inject, Injectable, Logger} from "@nestjs/common";
+import {ApiProperty} from "@nestjs/swagger";
 import {Repository} from "typeorm";
 import {Tree} from "./tree.entity";
 
 export class CreateTreeDefinition {
+	@ApiProperty()
 	public readonly name: string;
+
+	@ApiProperty()
 	public readonly maxDiameter: number;
+
+	@ApiProperty()
 	public readonly maxProduction: number;
+
+	@ApiProperty()
 	public readonly maxAge: number;
+
+	@ApiProperty()
 	public readonly mrpPerKg: number;
+
+	@ApiProperty()
 	public readonly pesticideUsage: number;
+
+	@ApiProperty()
 	public readonly fertilizerUsage: number;
 
 	constructor(
