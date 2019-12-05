@@ -12,6 +12,7 @@ import {RouterModule} from "@angular/router";
 import {ToastrModule} from "ngx-toastr";
 import {AdminLayoutComponent} from "./layouts/admin-layout/admin-layout.component";
 import {AuthLayoutComponent} from "./layouts/auth-layout/auth-layout.component";
+import {TreeTopService} from "./treetop.service";
 
 @NgModule({
 	imports: [
@@ -25,7 +26,9 @@ import {AuthLayoutComponent} from "./layouts/auth-layout/auth-layout.component";
 		ToastrModule.forRoot()
 	],
 	declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
-	providers: [],
+	providers: [
+		TreeTopService
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -3,35 +3,31 @@ import { Component, OnInit } from "@angular/core";
 declare interface RouteInfo {
   path: string;
   title: string;
-  rtlTitle: string;
   icon: string;
   class: string;
 }
 export const ROUTES: RouteInfo[] = [
   {
     path: "/dashboard",
-    title: "Simulating",
-    rtlTitle: "لوحة القيادة",
+    title: "New Sim",
     icon: "icon-chart-pie-36",
     class: ""
   },
   {
     path: "/icons",
     title: "Trees",
-    rtlTitle: "الرموز",
     icon: "icon-atom",
     class: ""
   },
   {
     path: "/maps",
-    title: "Maps",
-    rtlTitle: "خرائط",
+    title: "To be named",
     icon: "icon-pin",
-    class: "" },
+    class: ""
+  },
   {
     path: "/notifications",
-    title: "Notifications",
-    rtlTitle: "إخطارات",
+    title: "To be named",
     icon: "icon-bell-55",
     class: ""
   },
@@ -39,24 +35,21 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/user",
     title: "User Profile",
-    rtlTitle: "ملف تعريفي للمستخدم",
     icon: "icon-single-02",
     class: ""
   },
   {
     path: "/tables",
-    title: "Table List",
-    rtlTitle: "قائمة الجدول",
+    title: "Some List",
     icon: "icon-puzzle-10",
     class: ""
   },
   {
     path: "/typography",
     title: "Typography",
-    rtlTitle: "طباعة",
     icon: "icon-align-center",
     class: ""
-  },
+  }
 ];
 
 @Component({
