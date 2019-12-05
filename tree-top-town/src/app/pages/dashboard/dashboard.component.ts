@@ -7,10 +7,10 @@ import Chart from 'chart.js';
 })
 export class DashboardComponent implements OnInit {
   public canvas : any;
-  public ctx;
-  public datasets: any;
+  public ctx : any;
+  public datasets : any;
   public data: any;
-  public myChartData;
+  public myChartData : any;
   public clicked: boolean = true;
   public clicked1: boolean = false;
   public clicked2: boolean = false;
@@ -441,10 +441,6 @@ export class DashboardComponent implements OnInit {
 
     var myChart = new Chart(this.ctx, {
       type: 'bar',
-      responsive: true,
-      legend: {
-        display: false
-      },
       data: {
         labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
         datasets: [{
@@ -459,7 +455,13 @@ export class DashboardComponent implements OnInit {
           data: [53, 20, 10, 80, 100, 45],
         }]
       },
-      options: gradientBarChartConfiguration
+      options: {
+        responsive: false,
+        legend: {
+          display: false
+        },
+        ...gradientBarChartConfiguration
+      }
     });
 
   }

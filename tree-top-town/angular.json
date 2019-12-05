@@ -29,7 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node-modules/ngx-toastr/toastr.css",
+              "../node_modules/ngx-toastr/toastr.css",
               "src/assets/scss/black-dashboard.scss",
               "src/assets/css/nucleo-icons.css"
             ],

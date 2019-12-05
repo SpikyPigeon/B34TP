@@ -18,9 +18,13 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
   private toggleButton: any;
   private sidebarVisible: boolean;
 
-  constructor(private router: Router, private modalService: NgbModal) { }
+  constructor(private router: Router, private modalService: NgbModal) {
+    this.menuItems = [];
+    this.closeResult = "";
+    this.sidebarVisible = true;
+  }
 
-  changeSidebarColor(color){
+  changeSidebarColor(color:string){
     var sidebar = document.getElementsByClassName('sidebar')[0];
     var mainPanel = document.getElementsByClassName('main-panel')[0];
 
@@ -33,7 +37,7 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
         mainPanel.setAttribute('data',color);
     }
   }
-  changeDashboardColor(color){
+  changeDashboardColor(color:string){
     var body = document.getElementsByTagName('body')[0];
     if (body && color === 'white-content') {
         body.classList.add(color);
@@ -87,7 +91,10 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
     document.body.classList.remove("rtl", "menu-on-right");
     // we also need to delete the rtl bootstrap, so it does not break the other pages
     // that do not make use of rtl
-    document.getElementById("rtl-id").remove();
+    let rtl = document.getElementById("rtl-id");
+    if(rtl){
+      rtl.remove();
+    }
   }
   collapse() {
     this.isCollapsed = !this.isCollapsed;
@@ -136,7 +143,8 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
   }
   sidebarToggle() {
     // const toggleButton = this.toggleButton;
-    // const html = document.getElementsByTagName('html')[0];
+    let $layer = document.createElement("div");
+// const html = document.getElementsByTagName('html')[0];
     var $toggle = document.getElementsByClassName("navbar-toggler")[0];
 
     if (this.sidebarVisible === false) {
@@ -162,7 +170,6 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
         $toggle.classList.add("toggled");
       }, 430);
 
-      var $layer = document.createElement("div");
       $layer.setAttribute("class", "close-layer");
 
       if (html.querySelectorAll(".main-panel")) {
@@ -180,6 +187,7 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
       $layer.onclick = function() {
         //asign a function
         html.classList.remove("nav-open");
+        // @ts-ignore
         this.mobile_menu_visible = 0;
         $layer.classList.remove("visible");
         setTimeout(function() {
@@ -192,7 +200,7 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
       this.mobile_menu_visible = 1;
     }
   }
-  open(content) {
+  open(content:any) {
     this.modalService.open(content, {windowClass: 'modal-search'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {

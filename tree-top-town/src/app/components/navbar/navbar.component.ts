@@ -28,6 +28,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ) {
     this.location = location;
     this.sidebarVisible = false;
+    this.listTitles = [];
+    this.closeResult = "";
   }
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
    updateColor = () => {
@@ -102,7 +104,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
   sidebarToggle() {
     // const toggleButton = this.toggleButton;
-    // const html = document.getElementsByTagName('html')[0];
+    let $layer = document.createElement("div");
+// const html = document.getElementsByTagName('html')[0];
     var $toggle = document.getElementsByClassName("navbar-toggler")[0];
 
     if (this.sidebarVisible === false) {
@@ -128,7 +131,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         $toggle.classList.add("toggled");
       }, 430);
 
-      var $layer = document.createElement("div");
       $layer.setAttribute("class", "close-layer");
 
       if (html.querySelectorAll(".main-panel")) {
@@ -146,6 +148,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       $layer.onclick = function() {
         //asign a function
         html.classList.remove("nav-open");
+        // @ts-ignore
         this.mobile_menu_visible = 0;
         $layer.classList.remove("visible");
         setTimeout(function() {
@@ -173,7 +176,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     return "Dashboard";
   }
 
-  open(content) {
+  open(content:any) {
     this.modalService.open(content, {windowClass: 'modal-search'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
