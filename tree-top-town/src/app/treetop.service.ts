@@ -7,22 +7,21 @@ import {HttpClient} from "@angular/common/http";
 export class TreeTopService {
 	url: string = 'http://localhost:1337/';
 
-
-	constructor(private readonly http:HttpClient) {
+	constructor(private readonly http: HttpClient) {
 
 	}
 
 }
 
 export interface Simulation {
-	id:number;
+	id: number;
 	createdAt: Date;
-	budget:number;
-	terrainSize:number;
+	budget: number;
+	terrainSize: number;
 	details: SimulationDetails[];
 }
 
-export interface Tree{
+export interface Tree {
 	id: number;
 	name: string;
 	maxDiameter: number;
@@ -33,9 +32,9 @@ export interface Tree{
 	fertilizerUsage: number;
 }
 
-export interface SimulationDetails{
+export interface SimulationDetails {
 	id: number;
-	quantity:number;
+	quantity: number;
 	isBio: boolean;
 	tree: Tree;
 	simulation: Simulation;
