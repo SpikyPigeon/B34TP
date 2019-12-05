@@ -11,9 +11,13 @@ export class CreateSimulationDefinition {
 	@ApiProperty()
 	public readonly terrainSize: number;
 
-	constructor(budget: number, terrainSize: number) {
+	@ApiProperty()
+	public readonly duration: number;
+
+	constructor(budget: number, terrainSize: number, duration: number) {
 		this.budget = budget;
 		this.terrainSize = terrainSize;
+		this.duration = duration;
 	}
 }
 

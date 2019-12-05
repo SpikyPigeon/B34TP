@@ -23,6 +23,10 @@ export class Simulation {
 	@Column({nullable: false})
 	@ApiProperty()
 	terrainSize!: number;
+
+	@Column({nullable: false})
+	@ApiProperty()
+	duration!: number;
 }
 
 @Entity()
