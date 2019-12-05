@@ -15,9 +15,9 @@
     "api:dev": "yarn --cwd tree-top-server start:dev",
     "api:start": "yarn --cwd tree-top-server start",
     "api:build": "yarn --cwd tree-top-server build",
-    "app:start": "yarn --cwd TreeTopTown start",
-    "app:build": "yarn --cwd TreeTopTown build",
-    "app:prod": "yarn --cwd TreeTopTown prod",
+    "app:start": "yarn --cwd tree-top-town start",
+    "app:build": "yarn --cwd tree-top-town build",
+    "app:prod": "yarn --cwd tree-top-town prod",
     "start": "concurrently -k \"yarn api:dev\" \"yarn app:start\""
   },
   "dependencies": {
