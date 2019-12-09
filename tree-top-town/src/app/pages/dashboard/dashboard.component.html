@@ -27,7 +27,7 @@
 							<div class="card-body scroll">
 								<ul class="list-unstyled">
 									<li class="media" *ngFor="let t of trees">
-										<img class="align-self-center mr-1" src="{{this.tt.getImageForTree(t)}}" width="30"/>
+										<img class="align-self-center mr-1" src="{{this.tt.getImageForTree(t)}}" style="background-image: url('./assets/img/tree/tree.jpg'); background-size: cover;" width="30" height="30" alt=""/>
 										<div class="media-body">
 											<button type="button" class="btn btn-block btn-secondary px-1">
 												{{t.name}}
