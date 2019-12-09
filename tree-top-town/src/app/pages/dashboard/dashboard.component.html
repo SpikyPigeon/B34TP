@@ -7,7 +7,7 @@
 						Starting budget: <br>
 						<div class="input-group">
 							<div class="input-group-prepend">
-								<span class="Budget input-group-text form-control">$</span>
+								<span class="input-group-text form-control">$</span>
 							</div>
 							<input type="number" class="startSimForm form-control" min="20000"
 							       max="5000000" value="300000" aria-label="money" step="1000">
@@ -27,7 +27,9 @@
 							<div class="card-body scroll">
 								<ul class="list-unstyled">
 									<li class="media" *ngFor="let t of trees">
-										<img class="align-self-center mr-1" src="{{this.tt.getImageForTree(t)}}" style="background-image: url('./assets/img/tree/tree.jpg'); background-size: cover;" width="30" height="30" alt=""/>
+										<img class="align-self-center mr-1" src="{{this.tt.getImageForTree(t)}}"
+										     style="background-image: url('./assets/img/tree/tree.jpg'); background-size: cover;"
+										     width="30" height="30" alt=""/>
 										<div class="media-body">
 											<button type="button" class="btn btn-block btn-secondary px-1">
 												{{t.name}}
@@ -52,44 +54,30 @@
 							<h1 class="text-center">Edit Trees</h1>
 						</div>
 						<div class="card-body bigScroll">
-							<div class="row">
-								<div class="col-md-2">
-									<div class="card bg-dark">
-										<div class="card-header">
-											<button type="button" class="close" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-											<h3>Tree Name</h3>
-										</div>
-										<img class="card-img-top" src="./assets/img/tree/coconut.jpg">
-										<div class="card-body">
-											150$ each
-											<input type="number" min="1" max="50" class="form-control" value="1">
-											(price * quantity)
-											<label>Bio : <input type="checkbox"></label><br>
-											(penalty)
-											(productivity)
-										</div>
+							<div class="card-deck">
+								<div class="card bg-dark mb-4" style="width: 15rem; max-width: 15rem; min-width: 15rem"
+									*ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+									<img src="./assets/img/tree/coconut.jpg" class="card-img-top" alt=""/>
+									<div class="card-body">
+										<h5 class="card-title">Coconut Tree</h5>
+										<h6 class="card-subtitle mb-2 text-muted">100$ Each</h6>
 									</div>
-								</div>
-								<div class="col-md-2">
-									<div class="card bg-dark">
-										<div class="card-header">
-											<button type="button" class="close" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-											<h3>Tree Name</h3>
-										</div>
-										<img class="card-img-top" src="./assets/img/tree/kiwi.jpg">
-										<div class="card-body">
-											150$ each
-											<input type="number" min="1" max="50" class="form-control" value="1">
-											(price * quantity)
-											<label>Bio : <input type="checkbox" class="form-control"></label><br>
-											(penalty)
-											(productivity)
-										</div>
-									</div>
+									<ul class="list-group list-group-flush">
+										<li class="list-group-item bg-dark text-white p-1">
+											<div class="input-group m-0">
+												<div class="input-group-prepend">
+													<span class="input-group-text form-control">Quantity</span>
+												</div>
+												<input class="form-control" type="number" value="1" min="1"/>
+											</div>
+										</li>
+										<li class="list-group-item bg-dark text-white p-1">(Price * Quantity)</li>
+										<li class="list-group-item bg-dark text-white p-1 text-center">
+											<label class="w-100">Is Bio : <input class="form-control" type="checkbox"></label>
+										</li>
+										<li class="list-group-item bg-dark text-white p-1">(Penalty)</li>
+										<li class="list-group-item bg-dark text-white p-1">(Productivity)</li>
+									</ul>
 								</div>
 							</div>
 						</div>
