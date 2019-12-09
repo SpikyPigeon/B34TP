@@ -26,21 +26,6 @@ export class TreeTopService {
 	getImageForTree(tree: Tree): string {
 		return `./assets/img/tree/${tree.name.toLowerCase()}.jpg`;
 	}
-
-	updateTree(data:Tree): Observable<Tree> {
-		const {id,...rest} = data;
-		return this.http.put<Tree>(this.url + "tree/" + id, {...rest});
-	}
-
-	createTree(data:Tree): Observable<Tree> {
-		const {id,...rest} = data;
-		return this.http.post<Tree>(this.url + "tree", {...rest});
-	}
-
-	deleteTree(id:number) {
-		this.http.delete(this.url + "tree/" + id);
-	}
-
 }
 
 export interface Simulation {
