@@ -25,65 +25,16 @@
 								<h3>Tree Shop</h3>
 							</div>
 							<div class="card-body scroll">
-								<table class="table table-hover">
-									<tbody>
-									<tr>
-										<td>
-											<div class="row">
-												<div class="col-3">
-													<img src="./assets/img/tree/coconut.jpg">
-												</div>
-												<div class="col-9">
-													<h5>Coconut Tree</h5>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="row">
-												<div class="col-3">
-													<img src="./assets/img/tree/lemon.jpg">
-												</div>
-												<div class="col-9">
-													<h5>Lemon Tree</h5>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="row">
-												<div class="col-3">
-													<img src="./assets/img/tree/kiwi.jpg">
-												</div>
-												<div class="col-9">
-													<h5>Kiwi Tree</h5>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>Test</td>
-									</tr>
-									<tr>
-										<td>Test</td>
-									</tr>
-									<tr>
-										<td>Test</td>
-									</tr>
-									<tr>
-										<td>Test</td>
-									</tr>
-									<tr>
-										<td>Test</td>
-									</tr>
-									</tbody>
-									<div class="scrollbar scrollbar-frozen-dreams">
-										<div class="force-overflow"></div>
-									</div>
-								</table>
-
+								<ul class="list-unstyled">
+									<li class="media" *ngFor="let t of trees">
+										<img class="align-self-center mr-1" src="{{this.tt.getImageForTree(t)}}" width="30"/>
+										<div class="media-body">
+											<button type="button" class="btn btn-block btn-info px-1">
+												{{t.name}}
+											</button>
+										</div>
+									</li>
+								</ul>
 							</div>
 						</div>
 						<div class="card mt-1">
