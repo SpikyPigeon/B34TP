@@ -8,9 +8,7 @@ export class TreeTopService {
 	url: string = 'http://localhost:1337/';
 
 	constructor(private readonly http: HttpClient) {
-
 	}
-
 }
 
 export interface Simulation {

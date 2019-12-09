@@ -11,7 +11,7 @@ import {RouterModule} from "@angular/router";
 import {ToastrModule} from "ngx-toastr";
 import {AdminLayoutComponent} from "./layouts/admin-layout/admin-layout.component";
 import {AuthLayoutComponent} from "./layouts/auth-layout/auth-layout.component";
-import {TreeTopService} from "./treetop.service";
+import {TreeTopService} from "./service";
 
 @NgModule({
 	imports: [
