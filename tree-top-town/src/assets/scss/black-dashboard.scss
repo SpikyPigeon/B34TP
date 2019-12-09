@@ -108,3 +108,14 @@ select.form-control {
 	font-size:28px;
 	text-align:right;
 }
+
+.scroll{
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+.bigScroll{
+	max-height: 500px;
+	overflow-y: auto;
+}
+
