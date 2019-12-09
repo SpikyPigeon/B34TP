@@ -10,22 +10,22 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
 	{
 		path: "/dashboard",
-		title: "New Sim",
-		icon: "icon-chart-pie-36",
+		title: "New Simulation",
+		icon: "icon-molecule-40",
 		class: ""
 	},
 	{
 		path: "/icons",
 		title: "Trees",
-		icon: "icon-atom",
+		icon: "icon-world",
 		class: ""
 	},
 	{
 		path: "/maps",
-		title: "To be named",
-		icon: "icon-pin",
+		title: "Simulation Archive",
+		icon: "icon-book-bookmark",
 		class: ""
-	},
+	}/*,
 	{
 		path: "/notifications",
 		title: "To be named",
@@ -50,7 +50,7 @@ export const ROUTES: RouteInfo[] = [
 		title: "Typography",
 		icon: "icon-align-center",
 		class: ""
-	}
+	}*/
 ];
 
 @Component({
