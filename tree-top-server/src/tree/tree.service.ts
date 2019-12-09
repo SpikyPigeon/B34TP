@@ -56,7 +56,7 @@ export class TreeService {
 
 	async getAllTrees(): Promise<Tree[]> {
 		this.logger.log("Get All Trees");
-		return await this.feats.find();
+		return await this.feats.find({order: {name: "ASC"}});
 	}
 
 	async getTreeById(id: number): Promise<Tree> {
