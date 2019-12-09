@@ -73,7 +73,10 @@
 										</li>
 										<li class="list-group-item bg-dark text-white p-1">(Price * Quantity)</li>
 										<li class="list-group-item bg-dark text-white p-1 text-center">
-											<label class="w-100">Is Bio : <input class="form-control" type="checkbox"></label>
+											<div class="custom-control custom-switch">
+												<input type="checkbox" class="custom-control-input" id="isBio{{i}}">
+												<label class="custom-control-label" for="isBio{{i}}">Is this Tree Bio?</label>
+											</div>
 										</li>
 										<li class="list-group-item bg-dark text-white p-1">(Penalty)</li>
 										<li class="list-group-item bg-dark text-white p-1">(Productivity)</li>
