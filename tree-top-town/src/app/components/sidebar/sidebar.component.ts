@@ -28,7 +28,7 @@ export const ROUTES: RouteInfo[] = [
 	}/*,
 	{
 		path: "/notifications",
-		title: "To be named",
+		title: "View Sim",
 		icon: "icon-bell-55",
 		class: ""
 	},
