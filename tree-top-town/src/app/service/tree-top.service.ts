@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
 	providedIn: 'root'
@@ -8,6 +9,22 @@ export class TreeTopService {
 	url: string = 'http://localhost:1337/';
 
 	constructor(private readonly http: HttpClient) {
+	}
+
+	getTree(idOrName?: number | string): Observable<[Tree]> {
+		if (idOrName) {
+			if (typeof idOrName === "number") {
+				return this.http.get<[Tree]>(`${this.url}tree?id=${idOrName}`);
+			} else {
+				return this.http.get<[Tree]>(`${this.url}tree?name=${idOrName}`);
+			}
+		} else {
+			return this.http.get<[Tree]>(`${this.url}tree`);
+		}
+	}
+
+	getImageForTree(tree: Tree): string {
+		return `./assets/img/tree/${tree.name.toLowerCase()}.jpg`;
 	}
 }
 

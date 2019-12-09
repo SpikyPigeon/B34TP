@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import Chart from 'chart.js';
+import {TreeTopService} from "../../service";
 
 @Component({
 	selector: "app-dashboard",
@@ -15,7 +16,7 @@ export class DashboardComponent implements OnInit {
 	public clicked1: boolean = false;
 	public clicked2: boolean = false;
 
-	constructor() {
+	constructor(private readonly tt: TreeTopService) {
 	}
 
 	ngOnInit() {
