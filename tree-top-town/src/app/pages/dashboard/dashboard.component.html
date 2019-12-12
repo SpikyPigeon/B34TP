@@ -26,12 +26,12 @@
 							</div>
 							<div class="card-body scroll">
 								<ul class="list-unstyled">
-									<li class="media" *ngFor="let t of trees">
+									<li class="media" *ngFor="let t of trees; index as i">
 										<img class="align-self-center mr-1" src="{{this.tt.getImageForTree(t)}}"
 										     style="background-image: url('./assets/img/tree/tree.jpg'); background-size: cover;"
 										     width="30" height="30" alt=""/>
 										<div class="media-body">
-											<button type="button" class="btn btn-block btn-secondary px-1">
+											<button type="button" class="btn btn-block btn-secondary px-1" (click)="onAddTree(i)">
 												{{t.name}}
 											</button>
 										</div>
@@ -56,12 +56,12 @@
 						<div class="card-body bigScroll">
 							<div class="card-deck">
 								<div class="card bg-dark mb-4" style="width: 15rem; max-width: 15rem; min-width: 15rem"
-									*ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
-									<img src="./assets/img/tree/coconut.jpg" class="card-img-top" alt=""/>
+									*ngFor="let detail of this.simulation.details; index as i">
+									<img src="{{this.tt.getImageForTree(detail.tree)}}" class="card-img-top" alt=""/>
 									<div class="card-body clearfix">
 										<div class="float-left">
-											<h5 class="card-title">Coconut Tree</h5>
-											<h6 class="card-subtitle mb-2 text-muted">100$ Each</h6>
+											<h5 class="card-title">{{detail.tree.name}} Tree</h5>
+											<h6 class="card-subtitle mb-2 text-muted">150$ Each</h6>
 										</div>
 
 										<button type="button" class="btn btn-danger btn-sm float-right">&times;</button>
@@ -72,17 +72,19 @@
 												<div class="input-group-prepend">
 													<span class="input-group-text form-control">Quantity</span>
 												</div>
-												<input class="form-control" type="number" value="1" min="1"/>
+												<input class="form-control" type="number" [(ngModel)]="detail.quantity" min="1"/>
 											</div>
 										</li>
-										<li class="list-group-item bg-dark text-white p-1">(Price * Quantity)</li>
+										<li class="list-group-item bg-dark text-white p-1">{{150 * detail.quantity | currency}}</li>
 										<li class="list-group-item bg-dark text-white p-1 text-center">
 											<div class="custom-control custom-switch">
-												<input type="checkbox" class="custom-control-input" id="isBio{{i}}">
+												<input type="checkbox" class="custom-control-input" [(ngModel)]="detail.isBio" id="isBio{{i}}">
 												<label class="custom-control-label" for="isBio{{i}}">Is this Tree Bio?</label>
 											</div>
 										</li>
-										<li class="list-group-item bg-dark text-white p-1">(Penalty)</li>
+										<li class="list-group-item bg-dark text-white p-1">
+											({{1000 / mathLog(detail.quantity) | currency}})
+										</li>
 										<li class="list-group-item bg-dark text-white p-1">(Productivity)</li>
 									</ul>
 								</div>
