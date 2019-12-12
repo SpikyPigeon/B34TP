@@ -12,6 +12,7 @@ import {ToastrModule} from "ngx-toastr";
 import {AdminLayoutComponent} from "./layouts/admin-layout/admin-layout.component";
 import {AuthLayoutComponent} from "./layouts/auth-layout/auth-layout.component";
 import {TreeTopService} from "./service";
+import {NgbdModalContent} from './pages/icons/icon.modal';
 
 @NgModule({
 	imports: [
@@ -24,7 +25,8 @@ import {TreeTopService} from "./service";
 		AppRoutingModule,
 		ToastrModule.forRoot()
 	],
-	declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
+	declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, NgbdModalContent],
+	entryComponents:[NgbdModalContent],
 	providers: [
 		TreeTopService
 	],
