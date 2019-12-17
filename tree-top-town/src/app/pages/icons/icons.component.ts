@@ -13,7 +13,7 @@ export class IconsComponent implements OnInit {
 
 	open() {
 		const modalRef = this.modalService.open(NgbdModalContent);
-		modalRef.componentInstance.name = 'World';
+		modalRef.componentInstance.name = 'Bitch';
 	}
 
 	ngOnInit() {

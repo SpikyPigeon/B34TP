@@ -5,13 +5,17 @@ import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 	selector: "app-icons-modal",
 	template:  `
     <div class="modal-header">
-      <h4 class="modal-title">Hi there!</h4>
+      <h4 class="modal-title">New Tree</h4>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <p>Hello, {{name}}!</p>
+      <form>
+	      Tree Name: <input type="text" class="form-control" placeholder="Bob" style="color:black">
+	      Diameter when mature: <input type="number" class="form-control" min="1" max="40" value="5" style="color: black">
+	      
+      </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
