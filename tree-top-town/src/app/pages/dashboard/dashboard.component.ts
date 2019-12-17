@@ -28,6 +28,10 @@ export class DashboardComponent implements OnInit {
 		return Math.log(n);
 	}
 
+	onRemoveDetail(index: number) {
+		this.simulation.details.splice(index, 1);
+	}
+
 	onAddTree(index: number) {
 		let detail: SimulationDetails = {
 			simulation: this.simulation,

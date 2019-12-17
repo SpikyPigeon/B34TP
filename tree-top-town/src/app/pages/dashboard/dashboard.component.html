@@ -60,11 +60,11 @@
 									<img src="{{this.tt.getImageForTree(detail.tree)}}" class="card-img-top" alt=""/>
 									<div class="card-body clearfix">
 										<div class="float-left">
-											<h5 class="card-title">{{detail.tree.name}} Tree</h5>
+											<h5 class="card-title">{{detail.tree.name}} Tree ({{i}})</h5>
 											<h6 class="card-subtitle mb-2 text-muted">150$ Each</h6>
 										</div>
 
-										<button type="button" class="btn btn-danger btn-sm float-right">&times;</button>
+										<button type="button" class="btn btn-danger btn-sm float-right" (click)="onRemoveDetail(i)">&times;</button>
 									</div>
 									<ul class="list-group list-group-flush">
 										<li class="list-group-item bg-dark text-white p-1">
@@ -85,7 +85,7 @@
 										<li class="list-group-item bg-dark text-white p-1">
 											({{1000 / mathLog(detail.quantity) | currency}})
 										</li>
-										<li class="list-group-item bg-dark text-white p-1">(Productivity)</li>
+										<li class="list-group-item bg-dark text-white p-1">Max production : {{detail.tree.mrpPerKg}}</li>
 									</ul>
 								</div>
 							</div>
