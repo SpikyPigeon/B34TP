@@ -57,10 +57,12 @@
 							<div class="card-deck">
 								<div class="card bg-dark mb-4" style="width: 15rem; max-width: 15rem; min-width: 15rem"
 									*ngFor="let detail of this.simulation.details; index as i">
-									<img src="{{this.tt.getImageForTree(detail.tree)}}" class="card-img-top" alt=""/>
+									<img class="ard-img-top" src="{{this.tt.getImageForTree(detail.tree)}}"
+									     style="background-image: url('./assets/img/tree/tree.jpg'); background-size: cover;"
+									     width="240" height="240" alt=""/>
 									<div class="card-body clearfix">
 										<div class="float-left">
-											<h5 class="card-title">{{detail.tree.name}} Tree ({{i}})</h5>
+											<h5 class="card-title">{{detail.tree.name}} Tree</h5>
 											<h6 class="card-subtitle mb-2 text-muted">150$ Each</h6>
 										</div>
 
