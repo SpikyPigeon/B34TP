@@ -7,5 +7,5 @@ import {ArchiveComponent} from "../../pages/archive/archive.component";
 export const AdminLayoutRoutes: Routes = [
 	{path: "simulation", component: SimulationComponent},
 	{path: "trees", component: TreesComponent},
-	{path: "maps", component: ArchiveComponent},
+	{path: "archive", component: ArchiveComponent},
 ];

@@ -21,7 +21,7 @@ export class TreesComponent implements OnInit {
 	open(editTree?:Tree) {
 		const modalRef = this.modalService.open(NgbdModalContent);
 		if(editTree){
-			modalRef.componentInstance.data = editTree;
+			modalRef.componentInstance.data = Object.assign({}, editTree);
 		}
 		modalRef.componentInstance.onClose = () => {
 			console.log("onClose?");
