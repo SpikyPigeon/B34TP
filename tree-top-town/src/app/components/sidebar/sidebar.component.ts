@@ -9,13 +9,13 @@ declare interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
 	{
-		path: "/dashboard",
+		path: "/simulation",
 		title: "New Simulation",
 		icon: "icon-molecule-40",
 		class: ""
 	},
 	{
-		path: "/icons",
+		path: "/trees",
 		title: "Trees",
 		icon: "icon-world",
 		class: ""
@@ -25,32 +25,7 @@ export const ROUTES: RouteInfo[] = [
 		title: "Simulation Archive",
 		icon: "icon-book-bookmark",
 		class: ""
-	}/*,
-	{
-		path: "/notifications",
-		title: "View Sim",
-		icon: "icon-bell-55",
-		class: ""
-	},
-
-	{
-		path: "/user",
-		title: "User Profile",
-		icon: "icon-single-02",
-		class: ""
-	},
-	{
-		path: "/tables",
-		title: "Some List",
-		icon: "icon-puzzle-10",
-		class: ""
-	},
-	{
-		path: "/typography",
-		title: "Typography",
-		icon: "icon-align-center",
-		class: ""
-	}*/
+	}
 ];
 
 @Component({

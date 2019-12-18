@@ -12,7 +12,7 @@ import {ToastrModule} from "ngx-toastr";
 import {AdminLayoutComponent} from "./layouts/admin-layout/admin-layout.component";
 import {AuthLayoutComponent} from "./layouts/auth-layout/auth-layout.component";
 import {TreeTopService} from "./service";
-import {NgbdModalContent} from './pages/icons/icon.modal';
+import {NgbdModalContent} from './pages/trees/tree.modal';
 
 @NgModule({
 	imports: [

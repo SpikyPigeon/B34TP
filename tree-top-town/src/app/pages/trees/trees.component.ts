@@ -1,12 +1,12 @@
 import {Component, OnInit} from "@angular/core";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {NgbdModalContent} from "./icon.modal";
+import {NgbdModalContent} from "./tree.modal";
 
 @Component({
-	selector: "app-icons",
-	templateUrl: "icons.component.html"
+	selector: "app-trees",
+	templateUrl: "trees.component.html"
 })
-export class IconsComponent implements OnInit {
+export class TreesComponent implements OnInit {
 
 
 	constructor(private modalService: NgbModal) {}

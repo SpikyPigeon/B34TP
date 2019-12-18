@@ -2,10 +2,10 @@ import {Component, OnInit} from "@angular/core";
 import {Simulation, SimulationDetails, Tree, TreeTopService} from "../../service";
 
 @Component({
-	selector: "app-dashboard",
-	templateUrl: "dashboard.component.html"
+	selector: "app-simulation",
+	templateUrl: "simulation.component.html"
 })
-export class DashboardComponent implements OnInit {
+export class SimulationComponent implements OnInit {
 	private trees: Array<Tree>;
 	private simulation: Simulation;
 

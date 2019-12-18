@@ -8,7 +8,7 @@ import {BrowserModule} from "@angular/platform-browser";
 const routes: Routes = [
 	{
 		path: "",
-		redirectTo: "dashboard",
+		redirectTo: "simulation",
 		pathMatch: "full"
 	},
 	{
@@ -33,7 +33,7 @@ const routes: Routes = [
 	},
 	{
 		path: "**",
-		redirectTo: "dashboard"
+		redirectTo: "simulation"
 	}
 ];
 
