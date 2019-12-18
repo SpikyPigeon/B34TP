@@ -42,8 +42,10 @@
 						<div class="card mt-1">
 							<div class="card-body text-center">
 								<h2>{{simulation.budget - calculateTotalCost() | currency}}</h2>
+								<p><ngb-progressbar type="success" height="12px" [value]="calculateMoneyProgress()"></ngb-progressbar></p>
 								<hr>
 								<h2>{{calculateTerrainAreaLeft() | number}} / {{simulation.terrainSize * 10000 | number}} m²</h2>
+								<p><ngb-progressbar type="info" height="12px" [value]="calculateTerrainProgress()"></ngb-progressbar></p>
 							</div>
 						</div>
 					</form>

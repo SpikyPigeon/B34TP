@@ -87,6 +87,22 @@ export class SimulationComponent implements OnInit {
 		return cost;
 	}
 
+	calculateMoneyProgress(): number {
+		let progress: number = this.calculateTotalCost();
+
+		progress = ((progress * 100) / this.simulation.budget);
+
+		return 100 - progress;
+	}
+
+	calculateTerrainProgress():number {
+		let  progress: number = this.calculateTerrainAreaLeft();
+
+		progress = ((progress * 100) / (this.simulation.terrainSize * 10000));
+
+		return 100 - progress;
+	}
+
 	onRemoveDetail(index: number) {
 		this.simulation.details.splice(index, 1);
 	}
@@ -104,7 +120,7 @@ export class SimulationComponent implements OnInit {
 	}
 
 	submitSimulation() {
-		this.tt.archiveSimulation(this.simulation);
+		//this.tt.archiveSimulation(this.simulation);
 		this.simulation = {
 			details: [],
 			createdAt: new Date(),
