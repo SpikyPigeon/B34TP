@@ -31,6 +31,17 @@ export class SimulationComponent implements OnInit {
 		return Math.log(n);
 	}
 
+	calculateTerrainAreaLeft(): number {
+		let area = this.terrains * 10000;
+
+		for (let detail of this.simulation.details) {
+			const treeArea = Math.pow(Math.PI * (detail.tree.maxDiameter / 2), 2);
+			area -= treeArea * detail.quantity;
+		}
+
+		return area;
+	}
+
 	calculateTotalCost(): number {
 		let cost: number = this.terrains * 20000;
 
