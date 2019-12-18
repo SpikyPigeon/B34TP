@@ -8,18 +8,16 @@ import {Simulation, SimulationDetails, Tree, TreeTopService} from "../../service
 export class SimulationComponent implements OnInit {
 	private trees: Array<Tree>;
 	private simulation: Simulation;
-	private budget: number = 300000;
-	private terrains: number = 1;
-	private duration: number = 5;
 
 	constructor(private readonly tt: TreeTopService) {
 		this.trees = new Array<Tree>();
 		this.simulation = {
 			details: [],
 			createdAt: new Date(),
-			budget: 0,
+			budget: 300000,
+			duration: 5,
 			id: 0,
-			terrainSize: 0,
+			terrainSize: 1,
 		};
 	}
 
@@ -35,7 +33,7 @@ export class SimulationComponent implements OnInit {
 		const {tree} = detail;
 		let total: number = 0;
 
-		for (let i = 0; i < this.duration; i++) {
+		for (let i = 0; i < this.simulation.duration; i++) {
 			if (i < tree.maxAge) {
 				const topProdBegin = (tree.maxAge / 2) - (tree.maxAge * 0.1);
 				const topProdEnd = (tree.maxAge / 2) + (tree.maxAge * 0.1);
@@ -63,7 +61,7 @@ export class SimulationComponent implements OnInit {
 	}
 
 	calculateTerrainAreaLeft(): number {
-		let area = this.terrains * 10000;
+		let area = this.simulation.terrainSize * 10000;
 
 		for (let detail of this.simulation.details) {
 			const treeArea = Math.pow(Math.PI * (detail.tree.maxDiameter / 2), 2);
@@ -74,7 +72,7 @@ export class SimulationComponent implements OnInit {
 	}
 
 	calculateTotalCost(): number {
-		let cost: number = this.terrains * 20000;
+		let cost: number = this.simulation.terrainSize * 20000;
 
 		for (let detail of this.simulation.details) {
 			const price = 150 * detail.quantity;
@@ -106,6 +104,14 @@ export class SimulationComponent implements OnInit {
 	}
 
 	submitSimulation() {
-		
+		this.tt.archiveSimulation(this.simulation);
+		this.simulation = {
+			details: [],
+			createdAt: new Date(),
+			budget: 300000,
+			duration: 5,
+			id: 0,
+			terrainSize: 1,
+		};
 	}
 }

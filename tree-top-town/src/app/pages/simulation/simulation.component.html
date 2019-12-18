@@ -4,21 +4,21 @@
 			<div class="row">
 				<div class="col-3">
 					<form>
-						Starting budget: {{budget}} <br>
+						Starting budget: {{simulation.budget}} <br>
 						<div class="input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text form-control">$</span>
 							</div>
 							<input type="number" class="startSimForm form-control" min="20000" name="budget"
-							       max="5000000" aria-label="money" step="1000" [(ngModel)]="budget"/>
+							       max="5000000" aria-label="money" step="1000" [(ngModel)]="simulation.budget"/>
 						</div>
 						Nbr terrains:
 						<div class="input-group">
-							<input type="number" class="startSimForm form-control" min="1" name="terrains" [(ngModel)]="terrains"/>
+							<input type="number" class="startSimForm form-control" min="1" name="terrains" [(ngModel)]="simulation.terrainSize"/>
 						</div>
 						Nbr years:
 						<div class="input-group">
-							<input type="number" class="startSimForm form-control" min="1" max="200" name="duration" [(ngModel)]="duration"/>
+							<input type="number" class="startSimForm form-control" min="1" max="200" name="duration" [(ngModel)]="simulation.duration"/>
 						</div>
 						<div class="card">
 							<div class="card-header">
@@ -41,9 +41,9 @@
 						</div>
 						<div class="card mt-1">
 							<div class="card-body text-center">
-								<h2>{{budget - calculateTotalCost() | currency}}</h2>
+								<h2>{{simulation.budget - calculateTotalCost() | currency}}</h2>
 								<hr>
-								<h2>{{calculateTerrainAreaLeft() | number}} / {{terrains * 10000 | number}} m²</h2>
+								<h2>{{calculateTerrainAreaLeft() | number}} / {{simulation.terrainSize * 10000 | number}} m²</h2>
 							</div>
 						</div>
 					</form>
@@ -115,7 +115,7 @@
 					</div>
 				</div>
 				<button type="submit" class="btn btn-block btn-success" (click)="submitSimulation()"
-				        [disabled]="calculateTotalCost() > budget || calculateTerrainAreaLeft() < 0">
+				        [disabled]="calculateTotalCost() > simulation.budget || calculateTerrainAreaLeft() < 0">
 					Launch simulation!
 				</button>
 			</div>
