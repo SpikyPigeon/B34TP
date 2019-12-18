@@ -104,4 +104,8 @@ export class SimulationComponent implements OnInit {
 
 		this.simulation.details.push(detail);
 	}
+
+	submitSimulation() {
+		
+	}
 }
