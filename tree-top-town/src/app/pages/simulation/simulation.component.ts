@@ -8,11 +8,12 @@ import {Simulation, SimulationDetails, Tree, TreeTopService} from "../../service
 export class SimulationComponent implements OnInit {
 	private trees: Array<Tree>;
 	private simulation: Simulation;
-	private budget: number;
+	private budget: number = 300000;
+	private terrains: number = 1;
+	private duration: number = 5;
 
 	constructor(private readonly tt: TreeTopService) {
 		this.trees = new Array<Tree>();
-		this.budget = 300000;
 		this.simulation = {
 			details: [],
 			createdAt: new Date(),
@@ -31,7 +32,7 @@ export class SimulationComponent implements OnInit {
 	}
 
 	calculateTotalCost(): number {
-		let cost: number = 0;
+		let cost: number = this.terrains * 20000;
 
 		for (let detail of this.simulation.details) {
 			const price = 150 * detail.quantity;
