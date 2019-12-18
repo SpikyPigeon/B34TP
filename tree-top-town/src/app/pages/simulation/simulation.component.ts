@@ -8,9 +8,11 @@ import {Simulation, SimulationDetails, Tree, TreeTopService} from "../../service
 export class SimulationComponent implements OnInit {
 	private trees: Array<Tree>;
 	private simulation: Simulation;
+	private budget: number;
 
 	constructor(private readonly tt: TreeTopService) {
 		this.trees = new Array<Tree>();
+		this.budget = 300000;
 		this.simulation = {
 			details: [],
 			createdAt: new Date(),
@@ -26,6 +28,22 @@ export class SimulationComponent implements OnInit {
 
 	mathLog(n: number): number {
 		return Math.log(n);
+	}
+
+	calculateTotalCost(): number {
+		let cost: number = 0;
+
+		for (let detail of this.simulation.details) {
+			const price = 150 * detail.quantity;
+			const penalty = 1000 / Math.log(detail.quantity);
+			const products = (detail.isBio
+				? (2.8 * detail.tree.pesticideUsage) + (2.8 * detail.tree.fertilizerUsage)
+				: (2 * detail.tree.pesticideUsage) + (2 * detail.tree.fertilizerUsage))
+				* detail.quantity;
+			cost += price + penalty + products;
+		}
+
+		return cost;
 	}
 
 	onRemoveDetail(index: number) {
