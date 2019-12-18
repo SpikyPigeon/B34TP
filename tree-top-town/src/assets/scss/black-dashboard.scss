@@ -148,3 +148,29 @@ select.form-control {
 		border: 3px solid var(--scrollbarBG);
 	}
 }
+
+.medScroll{
+	max-height: 400px;
+	overflow-y: auto;
+
+	scrollbar-width: thin;
+	scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+
+	&::-webkit-scrollbar {
+		width: 11px;
+	}
+	&::-webkit-scrollbar-track {
+		background: var(--scrollbarBG);
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--thumbBG) ;
+		border-radius: 6px;
+		border: 3px solid var(--scrollbarBG);
+	}
+}
+
+.archive:hover{
+	cursor:pointer;
+	background-color: rgba(63, 89, 95, 0.75);
+	color:white;
+}

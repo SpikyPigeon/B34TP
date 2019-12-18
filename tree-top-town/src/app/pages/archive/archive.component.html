@@ -1,12 +1,64 @@
 <div class=" content">
 	<div class=" row">
 		<div class=" col-md-12">
-			<div class=" card card-plain">
+			<div class="card">
 				<div class=" card-header"><h1 class="text-center">Simulation Archive</h1></div>
-				<div class=" card-body">
-					
+				<div class=" card-body medScroll">
+					<!--<ul class="list-unstyled list-hover">
+						<li class="media" *ngFor="let s of [1,2,3,4,5,6,7,8,9,10,11,12]">
+							<div class="media-body">
+								<h2>Simulation date</h2>
+							</div>
+						</li>
+					</ul>-->
+					<table class="table table-hover">
+						<tr *ngFor="let s of [1,2,3,4,5,6,7,8,9,10,11,12]" class="archive">
+							<td>Simulation Date</td>
+						</tr>
+					</table>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<button class="btn btn-warning form-control" disabled>View simulation</button>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-3">
+							<img class="" src="./assets/img/tree/tree.jpg" width="240" height="240">
+						</div>
+						<div class="col-md-9" style="font-size:20px;">
+							<table class="table table-hover">
+								<tr class="table-header">
+									<td><b>Simulation Date</b></td>
+									<td><b>Simulation terrain</b></td>
+									<td><b>Simulation money</b></td>
+								</tr>
+								<tr>
+									<td>2019-12-18</td>
+									<td>40'000 m</td>
+									<td>$2,587,078</td>
+								</tr>
+								<tr class="table-header">
+									<td><b>Number of trees</b></td>
+									<td><b>Tree varieties</b></td>
+									<td><b>Total penalty</b></td>
+								</tr>
+								<tr>
+									<td>47</td>
+									<td>5</td>
+									<td>$857.94</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>
