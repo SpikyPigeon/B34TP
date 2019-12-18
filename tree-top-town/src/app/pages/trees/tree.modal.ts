@@ -6,8 +6,8 @@ import {Tree, TreeTopService} from "../../service";
 	selector: "app-icons-modal",
 	template:  `
     <div class="modal-header">
-      <h4 class="modal-title" *ngIf="data.id === 0">New Tree</h4>
-      <h4 class="modal-title" *ngIf="data.id !== 0">Edit Tree</h4>
+      <h2 class="modal-title" *ngIf="data.id === 0">New Tree</h2>
+      <h2 class="modal-title" *ngIf="data.id !== 0">Edit Tree</h2>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -15,7 +15,7 @@ import {Tree, TreeTopService} from "../../service";
     <div class="modal-body">
       <form>
 	      Tree Name: <input type="text" name="treeName" [(ngModel)]="data.name" class="form-control" style="color:black">
-	      Diameter when mature: <input type="number" name="diameter"  [(ngModel)]="data.maxDiameter"class="form-control" min="1" max="40" value="5" style="color: black">
+	      Diameter when mature: {{data.maxDiameter}} m <input type="range" name="diameter" [(ngModel)]="data.maxDiameter" class="custom-range" min="1" max="40" value="5" style="color: black">
 	      Maximum Production: <input type="number" name="maxProduction" [(ngModel)]="data.maxProduction" class="form-control" min="10" max="2000" value="200" style="color:black">
 	      Maximum Age: <input type="number" name="maxAge" [(ngModel)]="data.maxAge" class="form-control" min="3" max="5000" value="100" style="color:black">
 	      MRP/Kg: <input type="number" name="mrpPerKg" [(ngModel)]="data.mrpPerKg" class="form-control" min="0.2" max="20" value="1" step="0.1" style="color:black">

@@ -21,7 +21,7 @@ export const ROUTES: RouteInfo[] = [
 		class: ""
 	},
 	{
-		path: "/maps",
+		path: "/archive",
 		title: "Simulation Archive",
 		icon: "icon-book-bookmark",
 		class: ""
