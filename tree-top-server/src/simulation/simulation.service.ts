@@ -61,6 +61,7 @@ export class SimulationService {
 		let sim = await this.sims.createQueryBuilder("sim")
 			.leftJoinAndSelect("sim.details", "detail")
 			.leftJoinAndSelect("detail.tree", "tree")
+			.where("sim.id = :id", {id})
 			.getOne();
 
 		if (!sim) {
