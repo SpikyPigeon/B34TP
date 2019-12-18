@@ -48,6 +48,7 @@ export interface Simulation {
 	createdAt: Date;
 	budget: number;
 	terrainSize: number;
+	duration: number;
 	details: SimulationDetails[];
 }
 
