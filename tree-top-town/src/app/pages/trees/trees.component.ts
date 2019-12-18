@@ -13,7 +13,7 @@ export class TreesComponent implements OnInit {
 
 	open() {
 		const modalRef = this.modalService.open(NgbdModalContent);
-		modalRef.componentInstance.name = 'Bitch';
+		//modalRef.componentInstance.name = 'Bitch';
 	}
 
 	ngOnInit() {
