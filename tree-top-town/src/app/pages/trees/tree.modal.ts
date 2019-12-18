@@ -31,6 +31,7 @@ import {Tree, TreeTopService} from "../../service";
 
 export class NgbdModalContent {
 	@Input() data:Tree;
+	@Input() onClose: (() => void) | null = null;
 
 	constructor(public activeModal: NgbActiveModal, private readonly service:TreeTopService) {
 		this.data = {
@@ -43,14 +44,25 @@ export class NgbdModalContent {
 			pesticideUsage : 10,
 			fertilizerUsage : 10
 		};
+
+
+
 	}
 
 	saveTree(){
 		if(this.data.id === 0){
-			this.service.createTree(this.data).subscribe(value => console.log(value));
+			this.service.createTree(this.data).subscribe(() => {
+				if (this.onClose) {
+					this.onClose();
+				}
+			});
 		}
 		else{
-			this.service.updateTree(this.data).subscribe(value => console.log(value));
+			this.service.updateTree(this.data).subscribe(() => {
+				if (this.onClose) {
+					this.onClose();
+				}
+			});
 		}
 		this.activeModal.close('Close click');
 	}

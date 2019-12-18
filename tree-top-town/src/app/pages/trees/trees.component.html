@@ -8,24 +8,34 @@
 							<h1>Tree Bank</h1>
 						</div>
 						<div class="col-1">
-							<button type="button" class="btn btn-success">+</button>
+							<button type="button" class="btn btn-success" (click)="open()">+</button>
 						</div>
 					</div>
 
 				</div>
 				<div class="card-body scroll" style="max-height: 650px;">
 					<div class="card-deck">
-						<div class="card bg-dark mb-3" *ngFor="let i of [1,2,3,4,5,6,7,8]" style="width:20rem; max-width: 20rem; min-width: 20rem">
-							<img src="./assets/img/tree/tree.jpg" class="card-img-top" alt="...">
+						<div class="card bg-dark mb-3" *ngFor="let t of trees" style="width:20rem; max-width: 20rem; min-width: 20rem">
+							<img src="{{this.service.getImageForTree(t)}}" class="card-img-top" alt="..." width="320" height="320" style="background-image: url('./assets/img/tree/tree.jpg'); background-size: cover;">
 							<div class="card-body">
-								<h3 class="card-title">Tree Name</h3>
-								<p class="card-text">Text with price, production info and stuff like that.</p>
+								<h3 class="card-title">{{t.name}}</h3>
+								<p class="card-text"></p>
 							</div>
+							<ul class="card-text">
+								<li>Max Diameter: {{t.maxDiameter}} m</li>
+								<li>Max Production: {{t.maxProduction}}/year</li>
+								<li>Max Age: {{t.maxAge}} years</li>
+								<li>Yields ${{t.mrpPerKg}}/kg</li>
+								<li>Pesticide Usage: {{t.pesticideUsage}}</li>
+								<li>Fertilizer Usage: {{t.fertilizerUsage}}</li>
+							</ul>
 							<div class="card-footer">
-								<div class="btn-toolbar" role="toolbar">
-									<div class="btn-group" role="group">
-										<button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#exampleModal">Edit</button>
-										<button type="button" class="btn btn-block btn-danger">Delete</button>
+								<div class="" role="toolbar">
+									<div class="" role="group">
+										<button type="button" class="btn btn-success mx-2" data-toggle="modal" data-target="#exampleModal" (click)="open(t)">
+											Edit
+										</button>
+										<button type="button" class="btn btn-danger mx-2" (click)="delete(t)">Delete</button>
 									</div>
 								</div>
 							</div>
@@ -33,9 +43,6 @@
 					</div>
 				</div>
 			</div>
-
-				<button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button>
-
 		</div>
 	</div>
 </div>

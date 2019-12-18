@@ -37,8 +37,8 @@ export class TreeTopService {
 		return this.http.post<Tree>(this.url + "tree", {...rest});
 	}
 
-	deleteTree(id:number) {
-		this.http.delete(this.url + "tree/" + id);
+	deleteTree(id:number): Observable<{}> {
+		return this.http.delete(this.url + "tree/" + id);
 	}
 
 }
