@@ -6,7 +6,8 @@ import {Tree, TreeTopService} from "../../service";
 	selector: "app-icons-modal",
 	template:  `
     <div class="modal-header">
-      <h4 class="modal-title">New Tree</h4>
+      <h4 class="modal-title" *ngIf="data.id === 0">New Tree</h4>
+      <h4 class="modal-title" *ngIf="data.id !== 0">Edit Tree</h4>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
