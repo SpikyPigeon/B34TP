@@ -95,17 +95,22 @@
 										<li class="list-group-item bg-dark text-white p-1">
 											Penalty on tree {{1000 / mathLog(detail.quantity) | currency}}
 										</li>
-										<li class="list-group-item bg-dark text-white p-1">Max production : {{detail.tree.mrpPerKg}}</li>
+										<li class="list-group-item bg-dark text-white p-1">
+											Max production : {{detail.isBio
+											? detail.tree.maxProduction * 0.65 * detail.quantity
+											: detail.tree.maxProduction * detail.quantity}}
+										</li>
+										<li class="list-group-item bg-dark text-white p-1">
+											Max yield : {{calculateTreeYield(detail) | currency}}
+										</li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<hr>
-						<div class="card-footer">
-							<div class="clear-fix">
-								<h3 class="m-0" style="float: left">Total cost:</h3>
-								<h3 class="m-0" style="float: right">{{calculateTotalCost() | currency}}</h3>
-							</div>
+						<div class="card-footer clearfix">
+								<h3 class="m-0" style="float: left">Total cost: {{calculateTotalCost() | currency}}</h3>
+								<h3 class="m-0" style="float: right">Total yield: {{calculateTotalYield() | currency}}</h3>
 						</div>
 					</div>
 				</div>

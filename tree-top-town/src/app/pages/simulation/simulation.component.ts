@@ -31,6 +31,37 @@ export class SimulationComponent implements OnInit {
 		return Math.log(n);
 	}
 
+	calculateTreeYield(detail: SimulationDetails): number {
+		const {tree} = detail;
+		let total: number = 0;
+
+		for (let i = 0; i < this.duration; i++) {
+			if (i < tree.maxAge) {
+				const topProdBegin = (tree.maxAge / 2) - (tree.maxAge * 0.1);
+				const topProdEnd = (tree.maxAge / 2) + (tree.maxAge * 0.1);
+				const maxProd = detail.isBio ? detail.tree.maxProduction * 0.65 : detail.tree.maxProduction;
+
+				if (i >= topProdBegin && i <= topProdEnd) {
+					total += tree.maxProduction * detail.quantity;
+				} else {
+					total += Math.sin(i / tree.maxAge * Math.PI) * maxProd * detail.quantity;
+				}
+			}
+		}
+
+		return total;
+	}
+
+	calculateTotalYield(): number {
+		let total: number = 0;
+
+		for (let detail of this.simulation.details) {
+			total += this.calculateTreeYield(detail);
+		}
+
+		return total;
+	}
+
 	calculateTerrainAreaLeft(): number {
 		let area = this.terrains * 10000;
 
