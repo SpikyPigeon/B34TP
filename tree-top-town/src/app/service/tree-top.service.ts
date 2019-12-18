@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {concatMap} from "rxjs/operators";
 
 @Injectable({
 	providedIn: 'root'
@@ -41,6 +42,21 @@ export class TreeTopService {
 		return this.http.delete(this.url + "tree/" + id);
 	}
 
+	findSimulationArchive(id: number): Observable<Simulation> {
+		return this.http.get<Simulation>(this.url + "sim/" + id);
+	}
+
+	archiveSimulation(newSim: Simulation): Observable<Simulation> {
+		const {id, details, ...simData} = newSim;
+		const simDetails = details.map(detail => ({
+			quantity: detail.quantity,
+			isBio: detail.isBio,
+			tree: detail.tree.id
+		}));
+
+		return this.http.post<Simulation>(this.url + "sim", simData)
+			.pipe(concatMap(sim => this.http.post<Simulation>(this.url + "sim/" + sim.id + "/details", simDetails)));
+	}
 }
 
 export interface Simulation {

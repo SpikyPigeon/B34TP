@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import {Router} from "@angular/router";
 import {Simulation, SimulationDetails, Tree, TreeTopService} from "../../service";
 
 @Component({
@@ -9,7 +10,7 @@ export class SimulationComponent implements OnInit {
 	private trees: Array<Tree>;
 	private simulation: Simulation;
 
-	constructor(private readonly tt: TreeTopService) {
+	constructor(private readonly tt: TreeTopService, private readonly router: Router) {
 		this.trees = new Array<Tree>();
 		this.simulation = {
 			details: [],
@@ -120,14 +121,16 @@ export class SimulationComponent implements OnInit {
 	}
 
 	submitSimulation() {
-		//this.tt.archiveSimulation(this.simulation);
-		this.simulation = {
-			details: [],
-			createdAt: new Date(),
-			budget: 300000,
-			duration: 5,
-			id: 0,
-			terrainSize: 1,
-		};
+		this.tt.archiveSimulation(this.simulation).subscribe(sim => {
+			this.simulation = {
+				details: [],
+				createdAt: new Date(),
+				budget: 300000,
+				duration: 5,
+				id: 0,
+				terrainSize: 1,
+			};
+			this.router.navigate(["view-archive/" + sim.id]);
+		});
 	}
 }

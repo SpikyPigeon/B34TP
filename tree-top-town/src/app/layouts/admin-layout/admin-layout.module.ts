@@ -9,6 +9,7 @@ import {SimulationComponent} from "../../pages/simulation/simulation.component";
 import {TreesComponent} from "../../pages/trees/trees.component";
 import {ArchiveComponent} from "../../pages/archive/archive.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {ViewArchiveComponent} from "../../pages/archive/view-archive.component";
 
 @NgModule({
 	imports: [
@@ -22,6 +23,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 		SimulationComponent,
 		TreesComponent,
 		ArchiveComponent,
+		ViewArchiveComponent,
 	]
 })
 export class AdminLayoutModule {
