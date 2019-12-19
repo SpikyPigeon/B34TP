@@ -82,7 +82,7 @@ export class ViewArchiveComponent implements OnInit {
 		gradientStroke.addColorStop(0.4, "rgba(233,32,16,0.0)");
 		gradientStroke.addColorStop(0, "rgba(233,32,16,0)");
 
-		const data = this.simulation.details.map((detail): ChartDataSets => {
+		const data = this.simulation.details.map((detail, index): ChartDataSets => {
 			const {tree} = detail;
 			let years = new Array<number>();
 
@@ -109,12 +109,11 @@ export class ViewArchiveComponent implements OnInit {
 			return {
 				label: detail.tree.name + " Tree",
 				fill: true,
-				backgroundColor: gradientStroke,
-				borderColor: '#ec250d',
+				borderColor: this.getLineColor(index),
 				borderWidth: 2,
-				pointBackgroundColor: '#ec250d',
+				pointBackgroundColor: this.getLineColor(index),
 				pointBorderColor: 'rgba(255,255,255,0)',
-				pointHoverBackgroundColor: '#ec250d',
+				pointHoverBackgroundColor: this.getLineColor(index),
 				pointBorderWidth: 20,
 				pointHoverRadius: 4,
 				pointHoverBorderWidth: 15,
@@ -131,5 +130,27 @@ export class ViewArchiveComponent implements OnInit {
 				datasets: data
 			}
 		});
+	}
+
+	getLineColor(index: number): string {
+		const colors = [
+			"aqua",
+			"aquamarine",
+			"blue",
+			"blueviolet",
+			"brown",
+			"cadetblue",
+			"chocolate",
+			"cyan",
+			"darkgreen",
+			"darkred",
+			"deeppink",
+			"gold",
+			"hotpink",
+			"lightgreen",
+			"mediumblue",
+		];
+
+		return colors[index % colors.length];
 	}
 }
