@@ -85,7 +85,8 @@ export class SimulationComponent implements OnInit {
 			cost += price + penalty + products;
 		}
 
-		return cost;
+		const penalty = 4 * (1 / Math.log(this.simulation.details.length));
+		return cost * penalty;
 	}
 
 	calculateMoneyProgress(): number {
