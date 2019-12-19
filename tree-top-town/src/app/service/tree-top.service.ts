@@ -28,17 +28,17 @@ export class TreeTopService {
 		return `./assets/img/tree/${tree.name.toLowerCase()}.jpg`;
 	}
 
-	updateTree(data:Tree): Observable<Tree> {
-		const {id,...rest} = data;
+	updateTree(data: Tree): Observable<Tree> {
+		const {id, ...rest} = data;
 		return this.http.put<Tree>(this.url + "tree/" + id, {...rest});
 	}
 
-	createTree(data:Tree): Observable<Tree> {
-		const {id,...rest} = data;
+	createTree(data: Tree): Observable<Tree> {
+		const {id, ...rest} = data;
 		return this.http.post<Tree>(this.url + "tree", {...rest});
 	}
 
-	deleteTree(id:number): Observable<{}> {
+	deleteTree(id: number): Observable<{}> {
 		return this.http.delete(this.url + "tree/" + id);
 	}
 
@@ -47,14 +47,8 @@ export class TreeTopService {
 	}
 
 	findAllSimulations(): Observable<Array<Simulation>> {
-		return this.http.get<Array<Simulation>>(this.url+'sim');
+		return this.http.get<Array<Simulation>>(this.url + 'sim');
 	}
-
-	/*findFirstSimImage(): Observable<Simulation> {
-		this.http
-
-		return that;
-	}*/
 
 	archiveSimulation(newSim: Simulation): Observable<Simulation> {
 		const {id, details, ...simData} = newSim;
@@ -68,7 +62,7 @@ export class TreeTopService {
 			.pipe(concatMap(sim => this.http.post<Simulation>(this.url + "sim/" + sim.id + "/details", simDetails)));
 	}
 
-	calculateTotalYield(sim:Simulation): number {
+	calculateTotalYield(sim: Simulation): number {
 		let total: number = 0;
 
 		for (let detail of sim.details) {
@@ -78,7 +72,7 @@ export class TreeTopService {
 		return total;
 	}
 
-	calculateTreeYield(detail: SimulationDetails, duration:number): number {
+	calculateTreeYield(detail: SimulationDetails, duration: number): number {
 		const {tree} = detail;
 		let total: number = 0;
 
@@ -99,16 +93,31 @@ export class TreeTopService {
 		return total;
 	}
 
-	calculatePenalty(sim:Simulation): number{
+	calculatePenalty(sim: Simulation): number {
 		let penalty: number = 0;
 
-		for (let detail of sim.details){
+		for (let detail of sim.details) {
 			penalty += 1000 / Math.log(detail.quantity);
 		}
 
-		penalty += 4 * (1 / Math.log(sim.details.length));
+		return penalty + 4 * (1 / Math.log(sim.details.length));
+	}
 
-		return penalty;
+	calculateStuffCost(sim: Simulation): number {
+		let cost: number = 0;
+
+		for (let detail of sim.details) {
+			let c: number = 0;
+			if (detail.isBio) {
+				c = 2.8 * detail.tree.fertilizerUsage + 2.8 * detail.tree.pesticideUsage;
+			} else {
+				c = 2 * detail.tree.fertilizerUsage + 2 * detail.tree.pesticideUsage;
+			}
+
+			cost += c * detail.quantity;
+		}
+
+		return cost;
 	}
 }
 

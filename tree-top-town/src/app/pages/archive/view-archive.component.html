@@ -1,13 +1,73 @@
 <div class="content">
 	<div class="row">
+		<div class="col-12" *ngIf="simulation">
+			<div class="card">
+				<div class="card-header">
+					<h5 class="card-category">Simulation #{{simulation.id}}</h5>
+					<h2 class="card-title">{{simulation.createdAt | date:"medium":"+0000"}}</h2>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-3">
+							<p class="card-text">
+								<span class="font-weight-bold">Budget</span>:
+								{{simulation.budget | currency}}
+							</p>
+						</div>
+						<div class="col-3">
+							<p class="card-text">
+								<span class="font-weight-bold">Yield</span>:
+								{{this.tt.calculateTotalYield(simulation) | currency}}
+							</p>
+						</div>
+						<div class="col-3">
+							<p class="card-text">
+								<span class="font-weight-bold">Penalty</span>:
+								{{this.tt.calculatePenalty(simulation) | currency}}
+							</p>
+						</div>
+						<div class="col-3">
+							<p class="card-text">
+								<span class="font-weight-bold">Duration</span>:
+								{{simulation.duration | number}} Year(s)
+							</p>
+						</div>
+						<div class="col-6">
+							<p class="card-text">
+								<span class="font-weight-bold">Terrain Size</span>:
+								{{simulation.terrainSize * 10000 | number}} m²
+							</p>
+						</div>
+						<div class="col-6">
+							<p class="card-text">
+								<span class="font-weight-bold">Terrain Cost</span>:
+								{{simulation.terrainSize * 20000 | currency}}
+							</p>
+						</div>
+
+						<div class="col-12 mt-3">
+							<p class="card-text">
+								<span class="font-weight-bold">Money available at end of Simulation</span>:
+								{{simulation.budget
+									- simulation.terrainSize * 20000
+									- this.tt.calculatePenalty(simulation)
+									+ this.tt.calculateTotalYield(simulation)
+									- this.tt.calculateStuffCost(simulation)
+								| currency}}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="col-12">
 			<div class="card card-chart">
 				<div class="card-header">
-					<h5 class="card-category">Total Shipments</h5>
-					<h2 class="card-title">Performance</h2>
+					<h5 class="card-category">Tree Yield</h5>
+					<h2 class="card-title">Graph</h2>
 				</div>
 				<div class="card-body">
-					<div class="chart-area" style="height: 400px"><canvas #chartYield></canvas></div>
+					<div class="chart-area" style="height: 600px"><canvas #chartYield></canvas></div>
 				</div>
 			</div>
 		</div>

@@ -22,7 +22,6 @@ export class ViewArchiveComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.chartYield.nativeElement.height = 600;
 		this.context = this.chartYield.nativeElement.getContext("2d");
 	}
 
