@@ -1,7 +1,15 @@
-<div class=" content">
-	<div class=" row">
-		<div class="col-12" *ngIf="simulation">
-			{{simulation.id}}
+<div class="content">
+	<div class="row">
+		<div class="col-12">
+			<div class="card card-chart">
+				<div class="card-header">
+					<h5 class="card-category">Total Shipments</h5>
+					<h2 class="card-title">Performance</h2>
+				</div>
+				<div class="card-body">
+					<div class="chart-area" style="height: 400px"><canvas #chartYield></canvas></div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
