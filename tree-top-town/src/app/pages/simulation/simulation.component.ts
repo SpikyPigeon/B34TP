@@ -73,7 +73,7 @@ export class SimulationComponent implements OnInit {
 	}
 
 	calculateTotalCost(): number {
-		let cost: number = this.simulation.terrainSize * 20000;
+		let cost: number = 0;
 
 		for (let detail of this.simulation.details) {
 			const price = 150 * detail.quantity;
@@ -86,7 +86,7 @@ export class SimulationComponent implements OnInit {
 		}
 
 		const penalty = 4 * (1 / Math.log(this.simulation.details.length));
-		return cost * penalty;
+		return cost * penalty + this.simulation.terrainSize * 20000;
 	}
 
 	calculateMoneyProgress(): number {
