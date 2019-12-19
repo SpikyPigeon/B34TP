@@ -4,18 +4,6 @@
 			<div class="card">
 				<div class=" card-header"><h1 class="text-center">Simulation Archive</h1></div>
 				<div class=" card-body medScroll">
-					<!--
-					<table class="table table-hover">
-						<tr *ngFor="let s of [1,2,3,4,5,6,7,8,9,10,11,12]" class="archive" >
-							<td>
-								<img class="align-self-center mr-1" src=""
-							         style="background-image: url('./assets/img/tree/tree.jpg'); background-size: cover;"
-							         width="30" height="30" alt=""/>
-							</td>
-							<td><h4>Simulation Date</h4></td>
-						</tr>
-					</table>
-					-->
 					<div class="row">
 						<div class="col-4 archive" *ngFor="let s of simList" style="height:80px" (click)="getOneSim(s.id)">
 							<div class="row">
