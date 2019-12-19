@@ -53,7 +53,10 @@ export class SimulationService {
 
 	async getAllSimulations(): Promise<Simulation[]> {
 		this.logger.log("Get All Simulations");
-		return await this.sims.find();
+		return await this.sims.createQueryBuilder("sim")
+			.leftJoinAndSelect("sim.details", "detail")
+			.leftJoinAndSelect("detail.tree", "tree")
+			.getMany();
 	}
 
 	async getSimulationById(id: number): Promise<Simulation> {
