@@ -43,7 +43,7 @@
 				<div class="card-body">
 					<div class="row">
 						<div class="col-md-3">
-							<img class="" src="{{this.tt.getImageForTree(currentSim.details[0].tree)}}" width="240" height="240" style="background-image: './assets/img/tree/tree.jpg'">
+							<img class="" src="{{this.tt.getImageForTree(currentSim.details[0].tree)}}" width="240" height="240" style="background-image: url('./assets/img/tree/tree.jpg')">
 						</div>
 						<div class="col-md-9" style="font-size:20px;">
 							<table class="table table-hover">
@@ -67,7 +67,7 @@
 								</tr>
 								<tr>
 									<td>{{currentSim.duration}} years</td>
-									<td>47, 5 varieties</td>
+									<td>{{getNumberTrees('total')}} trees, {{getNumberTrees('species')}} species</td>
 									<td>{{currentSim.terrainSize * 10000 | number}} m²</td>
 									<td>481 / 389</td>
 								</tr>

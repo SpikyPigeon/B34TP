@@ -34,4 +34,24 @@ export class ArchiveComponent implements OnInit {
 		this.router.navigate(["view-archive/" + id]);
 	}
 
+	getNumberTrees(mode:string): number{
+		let n: number = 0;
+		if(mode === 'total' && this.currentSim){
+			for (let i of this.currentSim.details){
+				n += i.quantity;
+			}
+		}else if(mode === 'species' && this.currentSim){
+			let name:Array<string> = [];
+			for(let i of this.currentSim.details){
+				if (!name.find(value => value === i.tree.name)){
+					name.push(i.tree.name);
+				}
+			}
+			n = name.length;
+		}
+		return n;
+	}
+
+	
+
 }
