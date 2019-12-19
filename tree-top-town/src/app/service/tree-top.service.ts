@@ -106,6 +106,8 @@ export class TreeTopService {
 			penalty += 1000 / Math.log(detail.quantity);
 		}
 
+		penalty += 4 * (1 / Math.log(sim.details.length));
+
 		return penalty;
 	}
 }

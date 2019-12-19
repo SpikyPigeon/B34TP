@@ -20,4 +20,12 @@ export class ArchiveComponent implements OnInit {
 	getOneSim(id:number) {
 		this.tt.findSimulationArchive(id).subscribe(Sim => this.currentSim = Sim);
 	}
+
+	getSimPenalty():number {
+		if(this.currentSim){
+			return this.tt.calculatePenalty(this.currentSim);
+		}else{
+			return 0;
+		}
+	}
 }

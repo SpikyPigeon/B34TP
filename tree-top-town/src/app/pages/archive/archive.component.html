@@ -57,7 +57,7 @@
 									<td>{{currentSim.createdAt | date}}</td>
 									<td>{{currentSim.budget | currency}}</td>
 									<td>{{this.tt.calculateTotalYield(currentSim) | currency}}</td>
-									<td>oh shit</td>
+									<td>{{getSimPenalty() | currency}}</td>
 								</tr>
 								<tr class="table-header">
 									<td><b>Simulation Duration</b></td>
