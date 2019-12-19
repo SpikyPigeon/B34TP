@@ -4,54 +4,72 @@
 			<div class="card">
 				<div class=" card-header"><h1 class="text-center">Simulation Archive</h1></div>
 				<div class=" card-body medScroll">
-					<!--<ul class="list-unstyled list-hover">
-						<li class="media" *ngFor="let s of [1,2,3,4,5,6,7,8,9,10,11,12]">
-							<div class="media-body">
-								<h2>Simulation date</h2>
-							</div>
-						</li>
-					</ul>-->
+					<!--
 					<table class="table table-hover">
-						<tr *ngFor="let s of [1,2,3,4,5,6,7,8,9,10,11,12]" class="archive">
-							<td>Simulation Date</td>
+						<tr *ngFor="let s of [1,2,3,4,5,6,7,8,9,10,11,12]" class="archive" >
+							<td>
+								<img class="align-self-center mr-1" src=""
+							         style="background-image: url('./assets/img/tree/tree.jpg'); background-size: cover;"
+							         width="30" height="30" alt=""/>
+							</td>
+							<td><h4>Simulation Date</h4></td>
 						</tr>
 					</table>
+					-->
+					<div class="row">
+						<div class="col-4 archive" *ngFor="let s of simList" style="height:80px" (click)="getOneSim(s.id)">
+							<div class="row">
+								<div class="col-4 mt-3">
+									<img class="align-self-center mr-1 my-auto" src="./assets/img/tree/tree.jpg"
+									     style="background-image: url('./assets/img/tree/tree.jpg'); background-size: cover;"
+									     width="50" height="50" alt=""/>
+								</div>
+								<div class="col-8 mt-3">
+									<h3>{{s.createdAt | date}}</h3>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" *ngIf="currentSim">
 		<div class="col-12">
 			<div class="card">
 				<div class="card-header">
-					<button class="btn btn-warning form-control" disabled>View simulation</button>
+					<button class="btn btn-warning form-control">View simulation</button>
 				</div>
 				<div class="card-body">
 					<div class="row">
 						<div class="col-md-3">
-							<img class="" src="./assets/img/tree/tree.jpg" width="240" height="240">
+							<img class="" src="{{this.tt.getImageForTree(currentSim.details[0].tree)}}" width="240" height="240" style="background-image: './assets/img/tree/tree.jpg'">
 						</div>
 						<div class="col-md-9" style="font-size:20px;">
 							<table class="table table-hover">
 								<tr class="table-header">
 									<td><b>Simulation Date</b></td>
-									<td><b>Simulation terrain</b></td>
-									<td><b>Simulation money</b></td>
-								</tr>
-								<tr>
-									<td>2019-12-18</td>
-									<td>40'000 m</td>
-									<td>$2,587,078</td>
-								</tr>
-								<tr class="table-header">
-									<td><b>Number of trees</b></td>
-									<td><b>Tree varieties</b></td>
+									<td><b>Simulation Budget</b></td>
+									<td><b>Simulation Yield</b></td>
 									<td><b>Total penalty</b></td>
 								</tr>
 								<tr>
-									<td>47</td>
-									<td>5</td>
-									<td>$857.94</td>
+									<td>{{currentSim.createdAt | date}}</td>
+									<td>{{currentSim.budget | currency}}</td>
+									<td>{{this.tt.calculateTotalYield(currentSim) | currency}}</td>
+									<td>oh shit</td>
+								</tr>
+								<tr class="table-header">
+									<td><b>Simulation Duration</b></td>
+									<td><b>Number of Trees</b></td>
+									<td><b>Terrain Bought</b></td>
+									<td><b>Pesticide / Fertilizer</b></td>
+								</tr>
+								<tr>
+									<td>{{currentSim.duration}} years</td>
+									<td>47, 5 varieties</td>
+									<td>{{currentSim.terrainSize * 10000 | number}} m²</td>
+									<td>481 / 389</td>
 								</tr>
 							</table>
 						</div>

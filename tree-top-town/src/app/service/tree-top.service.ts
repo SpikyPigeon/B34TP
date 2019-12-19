@@ -46,6 +46,16 @@ export class TreeTopService {
 		return this.http.get<Simulation>(this.url + "sim/" + id);
 	}
 
+	findAllSimulations(): Observable<Array<Simulation>> {
+		return this.http.get<Array<Simulation>>(this.url+'sim');
+	}
+
+	/*findFirstSimImage(): Observable<Simulation> {
+		this.http
+
+		return that;
+	}*/
+
 	archiveSimulation(newSim: Simulation): Observable<Simulation> {
 		const {id, details, ...simData} = newSim;
 		const simDetails = details.map(detail => ({
@@ -56,6 +66,47 @@ export class TreeTopService {
 
 		return this.http.post<Simulation>(this.url + "sim", simData)
 			.pipe(concatMap(sim => this.http.post<Simulation>(this.url + "sim/" + sim.id + "/details", simDetails)));
+	}
+
+	calculateTotalYield(sim:Simulation): number {
+		let total: number = 0;
+
+		for (let detail of sim.details) {
+			total += this.calculateTreeYield(detail, sim.duration);
+		}
+
+		return total;
+	}
+
+	calculateTreeYield(detail: SimulationDetails, duration:number): number {
+		const {tree} = detail;
+		let total: number = 0;
+
+		for (let i = 0; i < duration; i++) {
+			if (i < tree.maxAge) {
+				const topProdBegin = (tree.maxAge / 2) - (tree.maxAge * 0.1);
+				const topProdEnd = (tree.maxAge / 2) + (tree.maxAge * 0.1);
+				const maxProd = detail.isBio ? detail.tree.maxProduction * 0.65 : detail.tree.maxProduction;
+
+				if (i >= topProdBegin && i <= topProdEnd) {
+					total += tree.maxProduction * detail.quantity;
+				} else {
+					total += Math.sin(i / tree.maxAge * Math.PI) * maxProd * detail.quantity;
+				}
+			}
+		}
+
+		return total;
+	}
+
+	calculatePenalty(sim:Simulation): number{
+		let penalty: number = 0;
+
+		for (let detail of sim.details){
+			penalty += 1000 / Math.log(detail.quantity);
+		}
+
+		return penalty;
 	}
 }
 
