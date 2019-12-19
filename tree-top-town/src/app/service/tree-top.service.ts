@@ -117,7 +117,7 @@ export class TreeTopService {
 			cost += c * detail.quantity;
 		}
 
-		return cost;
+		return cost * sim.duration;
 	}
 }
 
