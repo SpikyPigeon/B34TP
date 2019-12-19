@@ -63,13 +63,13 @@
 									<td><b>Simulation Duration</b></td>
 									<td><b>Number of Trees</b></td>
 									<td><b>Terrain Bought</b></td>
-									<td><b>Pesticide / Fertilizer</b></td>
+									<td><b>Pesticide & Fertilizer cost</b></td>
 								</tr>
 								<tr>
 									<td>{{currentSim.duration}} years</td>
 									<td>{{getNumberTrees('total')}} trees, {{getNumberTrees('species')}} species</td>
 									<td>{{currentSim.terrainSize * 10000 | number}} m²</td>
-									<td>481 / 389</td>
+									<td>{{getStuffSim() | currency}}</td>
 								</tr>
 							</table>
 						</div>

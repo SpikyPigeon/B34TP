@@ -52,6 +52,12 @@ export class ArchiveComponent implements OnInit {
 		return n;
 	}
 
-	
+	getStuffSim():number{
+		if(this.currentSim){
+			return this.tt.calculateStuffCost(this.currentSim);
+		}else{
+			return 0;
+		}
+	}
 
 }
