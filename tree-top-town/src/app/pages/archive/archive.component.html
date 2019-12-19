@@ -20,7 +20,7 @@
 						<div class="col-4 archive" *ngFor="let s of simList" style="height:80px" (click)="getOneSim(s.id)">
 							<div class="row">
 								<div class="col-4 mt-3">
-									<img class="align-self-center mr-1 my-auto" src="./assets/img/tree/tree.jpg"
+									<img class="align-self-center mr-1 my-auto" src="{{this.tt.getImageForTree(s.details[0].tree)}}"
 									     style="background-image: url('./assets/img/tree/tree.jpg'); background-size: cover;"
 									     width="50" height="50" alt=""/>
 								</div>
@@ -38,7 +38,7 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-header">
-					<button class="btn btn-warning form-control">View simulation</button>
+					<button class="btn btn-warning form-control" (click)="viewSimGraph(currentSim.id)">View simulation</button>
 				</div>
 				<div class="card-body">
 					<div class="row">
@@ -54,7 +54,7 @@
 									<td><b>Total penalty</b></td>
 								</tr>
 								<tr>
-									<td>{{currentSim.createdAt | date}}</td>
+									<td>{{currentSim.createdAt | date : 'short' : '+0000'}}</td>
 									<td>{{currentSim.budget | currency}}</td>
 									<td>{{this.tt.calculateTotalYield(currentSim) | currency}}</td>
 									<td>{{getSimPenalty() | currency}}</td>
