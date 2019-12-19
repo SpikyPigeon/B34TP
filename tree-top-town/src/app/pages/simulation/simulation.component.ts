@@ -55,15 +55,11 @@ export class SimulationComponent implements OnInit {
 		for (let detail of this.simulation.details) {
 			const price = 150 * detail.quantity;
 			const penalty = 1000 / Math.log(detail.quantity);
-			const products = (detail.isBio
-				? (2.8 * detail.tree.pesticideUsage) + (2.8 * detail.tree.fertilizerUsage)
-				: (2 * detail.tree.pesticideUsage) + (2 * detail.tree.fertilizerUsage))
-				* detail.quantity;
-			cost += price + penalty + products;
+			cost += price + penalty;
 		}
 
 		const penalty = 4 * (1 / Math.log(this.simulation.details.length));
-		return cost * penalty + this.simulation.terrainSize * 20000;
+		return cost * penalty + this.simulation.terrainSize * 20000 + this.tt.calculateStuffCost(this.simulation);
 	}
 
 	calculateMoneyProgress(): number {
